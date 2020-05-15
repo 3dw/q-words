@@ -10,6 +10,8 @@ export default {
   '/spin': 'Spinning Game',
   '/name': 'Recongnizing Game',
   '/privacy': 'Privacy',
+  '/write': 'Writing Game',
+  write_game: 'Writing Game',
   privacy_note: 'Privacy Notice: All photos and materials you store in the "Photo Game" are stored only on your machine, independent of others, and developers will not collect them. ',
   privacy: 'Privacy',
   lang: 'lang',

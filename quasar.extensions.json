@@ -8,7 +8,11 @@
     },
     "build_always": false,
     "__internal": {
-      "dev": {},
+      "dev": {
+        "spa": {
+          "iconHash": "4a28d8e8ce7cc1958ef2c4438317b997"
+        }
+      },
       "build": {
         "cordova": {
           "iconHash": "4a28d8e8ce7cc1958ef2c4438317b997",

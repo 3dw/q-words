@@ -10,6 +10,8 @@ export default {
   '/spin': '旋轉遊戲',
   '/name': '認人遊戲',
   '/privacy': '隱私權',
+  '/write': '寫字遊戲',
+  write_game: '寫字遊戲',
   privacy: '隱私權',
   privacy_note: '隱私權說明：所有您儲存於「認照片遊戲」中的照片和資料只儲存在您的機器中，和其他人是獨立的，開發者也不會收集它們。',
   lang: '語言',
