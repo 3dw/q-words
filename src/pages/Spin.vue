@@ -14,7 +14,7 @@
     <div class="centered">
       <div class="spin" v-bind:class="{good: isWin(), hide: winning || loosing}" v-bind:style="{ transform: countTrans(deg) }" @click="check()" @touchstart="check()">
         <div class="image">
-          <h4 class="attached top middle text-white shadow">{{card_list[a].name}}</h4>
+          <h1>{{card_list[a].name}}</h1>
         </div>
       </div>
     </div>
@@ -142,6 +142,11 @@ export default {
 
 .hide {
   opacity: 0;
+}
+
+h1 {
+  font-weight: bolder;
+  font-size: 62vmin;
 }
 
 </style>

@@ -95,22 +95,6 @@
             {{$t('edit')}}
           </q-item-section>
         </q-item>
-        <q-item clickable @click.native="$router.push('/contact')" v-ripple>
-          <q-item-section avatar>
-            <q-icon name="phone" />
-          </q-item-section>
-          <q-item-section>
-            {{$t('contact')}}
-          </q-item-section>
-        </q-item>
-        <q-item clickable @click.native="$router.push('/privacy')" v-ripple>
-          <q-item-section avatar>
-            <q-icon name="assignment_turned_in" />
-          </q-item-section>
-          <q-item-section>
-            {{$t('privacy')}}
-          </q-item-section>
-        </q-item>
       </q-list>
     </q-drawer>
 
@@ -133,23 +117,16 @@
             />
           </q-item-section>
         </q-item>
-        <q-item v-if="human_vs_bot">
+        <!-- <q-item v-if="human_vs_bot">
           <q-item-section>
             <q-select color="purple-12" v-model="bot_level" :options="options" :label="$t('bot_level')" @input="saveBotLev()" />
           </q-item-section>
-        </q-item>
+        </q-item> -->
         <q-item>
           <q-chat-message avatar="../assets/john.png" :text="says.map((o) => $t(o))">
           </q-chat-message>
         </q-item>
         <q-item clickable v-ripple @click.native="$router.push('/pair'); rightDrawerOpen = false; human_vs_bot = true" >
-
-          <q-avatar>
-            <img src="../assets/john.png">
-          </q-avatar>
-          <q-item-section>
-            {{ $t('Let\'s play') }}
-          </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
@@ -205,7 +182,10 @@ export default {
         { name: '水' },
         { name: '火' },
         { name: '太' },
-        { name: '陽' }
+        { name: '陽' },
+        { name: '丁' },
+        { name: '好' },
+        { name: '我' }
       ]
     }
   },
@@ -220,7 +200,7 @@ export default {
     johnSay: function (text) {
       this.say = text
     },
-    addCard: function (url, name) {
+    addCard: function (name) {
       this.card_list.push({ name: name })
       this.setLocal('card_list')
     },
@@ -243,9 +223,11 @@ export default {
     getLocal: function (n) {
       console.log('get:' + n)
       this[n] = JSON.parse(this.$q.localStorage.getItem(n))
+      // console.log(this[n])
     },
     setLocal: function (n) {
       console.log('set:' + n)
+      console.log(this[n])
       this.$q.localStorage.set(n, JSON.stringify(this[n]))
       // console.log(this.$q.localStorage.getItem(n))
     }

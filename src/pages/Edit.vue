@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <q-page>
     <q-list bordered separator>
       <q-item>
     </q-item>
@@ -8,7 +8,7 @@
           <q-input v-model="name" :label="$t('insert_name')" />
         </q-item-section>
         <q-item-section>
-          <q-btn color = "green" :disable="!name || !url" @click="addCard(url, name); url = ''; name = ''">
+          <q-btn color = "green" :disable="!name" @click="addCard(name); name = ''">
             {{$t('add')}}
           </q-btn>
         </q-item-section>
@@ -59,6 +59,7 @@ export default {
   methods: {
     addCard: function (name) {
       this.$emit('addCard', name)
+      this.$forceUpdate()
     },
     removeCard: function (index) {
       this.$emit('removeCard', index)

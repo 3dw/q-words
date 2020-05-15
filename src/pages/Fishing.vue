@@ -13,22 +13,20 @@
     </q-toolbar>
     <div class="q-pa-md">
       <div class="row">
-        <div class="col" v-for = "(f, index) in fishs1" :key="f.img+index" v-bind:class="[!memory || face0 == index ? 'face' : 'back', f.img ? 'good' : 'null', face0 == index ? 'focus' : 'other']">
+        <div class="col" v-for = "(f, index) in fishs1" :key="index" v-bind:class="[!memory || face0 == index ? 'face' : 'back', f.name ? 'good' : 'null', face0 == index ? 'focus' : 'other']">
           <q-card @click = "flip(index,0) ">
             <div class="content">
-              <span class="header" v-show="!hard">{{!memory || face0 == index ? f.name : '?'}}</span>
+              <span class="header">{{!memory || face0 == index ? f.name : '?'}}</span>
             </div>
-            <img v-bind:class="fishs1[face0] == fishs2[face1] ? 'gold' : '' " :src="f.img"/>
           </q-card>
         </div>
       </div>
       <div class="row">
-        <div class="col" v-for = "(f, index) in fishs2" :key="index" v-bind:class="[!memory || face1 == index ? 'face' : 'back', f.img ? 'good' : 'null', face1 == index ? 'focus' : 'other']">
+        <div class="col" v-for = "(f, index) in fishs2" :key="index" v-bind:class="[!memory || face1 == index ? 'face' : 'back', f.name ? 'good' : 'null', face1 == index ? 'focus' : 'other']">
           <q-card @click = "flip(index,1)">
             <div class="content">
               <span class="header">{{!memory || face1 == index ? f.name : '?'}}</span>
             </div>
-            <img v-show="!hard" v-bind:class="fishs1[face0] == fishs2[face1] ? 'gold' : '' " :src="f.img"/>
           </q-card>
         </div>
       </div>
@@ -36,12 +34,6 @@
     <span>{{$t('memory_mode')}}:</span>
     <q-toggle
       v-model="memory"
-      color="green"
-    />
-    <br/>
-    <span>{{$t('img_vs_text')}}:</span>
-    <q-toggle
-      v-model="hard"
       color="green"
     />
     <win v-show="winning"></win>
@@ -66,7 +58,6 @@ export default {
       winning: false,
       loosing: false,
       memory: true,
-      hard: false,
       fishs1: [],
       fishs2: [],
       face0: -1,
@@ -77,7 +68,7 @@ export default {
     flip: function (i, n) {
       if (n === 0 && !this.w) { this.face0 = i }
       if (n === 1 && !this.w) { this.face1 = i }
-      if (!this.w && this.fishs1[this.face0] && this.fishs2[this.face1] && this.fishs1[this.face0].img === this.fishs2[this.face1].img) {
+      if (!this.w && this.fishs1[this.face0] && this.fishs2[this.face1] && this.fishs1[this.face0].name === this.fishs2[this.face1].name) {
         this.w = true
         setTimeout(this.remove, 1000)
       } else {
@@ -163,5 +154,9 @@ export default {
 
 .null {
   visibility: hidden !important;
+}
+
+.header {
+  font-size: 18vw;
 }
 </style>

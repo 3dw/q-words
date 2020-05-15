@@ -21,7 +21,7 @@
           <q-list bordered separator>
             <q-item v-for = "(c, index) in fishs1" :key = "index" v-show="noDup(index) && !c.hide">
               <q-item-section>
-                <q-btn color="green" big @click = "b = index; check()" @touchstart="b = index; check()">{{ c.name }}</q-btn>
+                <button class="big" @click = "b = index; check()" @touchstart="b = index; check()">{{ c.name }}</button>
               </q-item-section>
             </q-item>
           </q-list>
@@ -80,7 +80,7 @@ export default {
     reset: function () {
       this.fishs1 = this.card_list.filter(function (o) { return o && !o.hide }).slice().sort(function () {
         return Math.random() - 0.5
-      }).slice(0, 4)
+      }).slice(0, 2)
       this.winning = false
       this.loosing = false
       this.progress = 0
@@ -107,7 +107,7 @@ export default {
           this.bad++
         }
         this.t += Number(this.speed)
-        this.progress += (this.bot_level / 50)
+        this.progress += (this.speed / 4)
         if (this.progress >= 1 && this.human_vs_bot) {
           this.loose()
         }
@@ -137,6 +137,10 @@ export default {
   font-size: 33vmin;
   margin: auto auto;
   text-align: center;
+}
+
+button {
+  font-size: 20vmin;
 }
 
 </style>

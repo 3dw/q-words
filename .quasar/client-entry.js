@@ -19,7 +19,7 @@ import '@quasar/extras/material-icons/material-icons.css'
 
 
 
-// We load Quasar stylus files
+// We load Quasar stylesheet file
 import 'quasar/dist/quasar.styl'
 
 
@@ -44,23 +44,27 @@ import qboot_Booti18n from 'boot/i18n'
 
 
 
-Vue.config.devtools = true
-Vue.config.productionTip = false
 
 
-
-console.info('[Quasar] Running SPA.')
-
-
-
-const { app, router } = createApp()
-
+import '@quasar/fastclick'
 
 
 async function start () {
+  const { app, router } = await createApp()
+
   
+
+  
+  let routeUnchanged = true
+  const redirect = url => {
+    routeUnchanged = false
+    window.location.href = url
+  }
+
+  const urlPath = window.location.href.replace(window.location.origin, '')
   const bootFiles = [qboot_Booti18n]
-  for (let i = 0; i < bootFiles.length; i++) {
+
+  for (let i = 0; routeUnchanged === true && i < bootFiles.length; i++) {
     if (typeof bootFiles[i] !== 'function') {
       continue
     }
@@ -71,7 +75,9 @@ async function start () {
         router,
         
         Vue,
-        ssrContext: null
+        ssrContext: null,
+        redirect,
+        urlPath
       })
     }
     catch (err) {
@@ -84,6 +90,10 @@ async function start () {
       return
     }
   }
+
+  if (routeUnchanged === false) {
+    return
+  }
   
 
   
@@ -91,8 +101,17 @@ async function start () {
     
 
     
+    document.addEventListener('deviceready', () => {
+    Vue.prototype.$q.cordova = window.cordova
+    
 
+    
       new Vue(app)
+    
+
+    
+    }, false) // on deviceready
+    
 
     
 
