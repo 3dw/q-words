@@ -189,11 +189,28 @@ export default {
       leftDrawerOpen: this.$q.platform.is.desktop,
       rightDrawerOpen: this.$q.platform.is.desktop,
       card_list: [
-        { img: 'https://i.imgur.com/9g8Snz6.jpg', name: '天使' },
-        { img: 'https://i.imgur.com/41zpBhQ.jpg', name: '山' },
-        { img: 'https://i.imgur.com/1vZiSGf.jpg', name: '瀑布' },
-        { img: 'https://i.imgur.com/rPCYQls.png', name: '圓臉' },
-        { img: 'https://i.imgur.com/SuLzJZ3.png', name: '蟲蟲' }
+        { name: '大' },
+        { name: '中' },
+        { name: '小' },
+        { name: '人' },
+        { name: '山' },
+        { name: '一' },
+        { name: '二' },
+        { name: '三' },
+        { name: '四' },
+        { name: '五' },
+        { name: '六' },
+        { name: '七' },
+        { name: '八' },
+        { name: '九' },
+        { name: '十' },
+        { name: '春' },
+        { name: '日' },
+        { name: '土' },
+        { name: '木' },
+        { name: '水' },
+        { name: '火' },
+        { name: '太陽' }
       ]
     }
   },
@@ -209,7 +226,7 @@ export default {
       this.say = text
     },
     addCard: function (url, name) {
-      this.card_list.push({ img: url, name: name })
+      this.card_list.push({ name: name })
       this.setLocal('card_list')
     },
     removeCard: function (index) {

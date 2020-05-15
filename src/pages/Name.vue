@@ -16,24 +16,19 @@
       <div class="row">
         <div class="col">
           <q-list bordered separator v-if="hard">
-            <q-item clickable v-ripple v-for="(c,idx) in card_list" v-bind:key="idx" v-show="idx != a && !c.hide">
+            <q-item clickable v-ripple v-for="(c,idx) in fishs1" v-bind:key="idx" v-show="idx != a && !c.hide">
               <q-item-section>
-                  <img class="full" :src="c.img" />
                   <span class="text-white small shadow attached top">{{ c.name }}</span>
               </q-item-section>
             </q-item>
           </q-list>
-          <q-card v-if="!hard">
-            <img :src="card_list[a].img"/>
-          </q-card>
         </div>
         <div class="col">
           <q-list bordered separator>
-            <q-item v-for = "(c, index) in card_list" :key = "index" v-show="noDup(index) && !c.hide">
+            <q-item v-for = "(c, index) in fishs1" :key = "index" v-show="noDup(index) && !c.hide">
               <q-item-section>
                 <q-btn color="green" big @click = "b = index; check()" @touchstart="b = index; check()">{{ c.name }}</q-btn>
               </q-item-section>
-              <img class="avatar" :src="c.img" v-show="!hard"/>
             </q-item>
           </q-list>
         </div>
@@ -41,10 +36,10 @@
     </div>
     <q-select color="purple-12" v-model="speed" :options="options" :label="$t('speed')" />
     <span>{{$t('who_is_missing?')}}:</span>
-    <q-toggle
+    <!-- <q-toggle
       v-model="hard"
       color="green"
-    />
+    /> -->
     <win v-show="winning" ></win>
     <john-win v-show="loosing" ></john-win>
   </q-page>

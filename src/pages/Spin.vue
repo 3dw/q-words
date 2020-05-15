@@ -15,7 +15,6 @@
       <div class="spin" v-bind:class="{good: isWin(), hide: winning || loosing}" v-bind:style="{ transform: countTrans(deg) }" @click="check()" @touchstart="check()">
         <div class="image">
           <h4 class="attached top middle text-white shadow">{{card_list[a].name}}</h4>
-          <img class="a" :src="card_list[a].img">
         </div>
       </div>
     </div>

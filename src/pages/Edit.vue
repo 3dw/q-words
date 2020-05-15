@@ -2,25 +2,6 @@
   <q-page padding>
     <q-list bordered separator>
       <q-item>
-        <div class="upload-btn-wrapper">
-          <template>
-            <image-uploader
-            :debug="1"
-            :maxWidth="200"
-            :quality="0.7"
-            :autoRotate=true
-            outputFormat="verbose"
-            :preview=false
-            :className="['fileinput', { 'fileinput--loaded' : hasImage }]"
-            accept="image/*"
-            doNotResize="['gif', 'svg']"
-            @input="setImage"
-          ></image-uploader>
-          </template>
-          <q-avatar>
-              <img v-show="url" :src="url" />
-          </q-avatar>
-        </div>
     </q-item>
     <q-item>
         <q-item-section>
@@ -33,11 +14,6 @@
         </q-item-section>
       </q-item>
       <q-item clickable v-ripple v-for="(c,idx) in card_list" v-bind:key="idx" :active="c.hide">
-        <q-item-section avatar>
-          <q-avatar>
-            <img :src="c.img" />
-          </q-avatar>
-        </q-item-section>
         <q-item-section>{{ c.name }}</q-item-section>
         <q-item-section>
           <q-btn color="red" @click="removeCard(idx)">
@@ -81,28 +57,14 @@ export default {
     }
   },
   methods: {
-    addCard: function (url, name) {
-      this.$emit('addCard', url, name)
+    addCard: function (name) {
+      this.$emit('addCard', name)
     },
     removeCard: function (index) {
       this.$emit('removeCard', index)
     },
     hideShow: function (index, bool) {
       this.$emit('hideShow', index, bool)
-    },
-    setImage: function (file) {
-      this.hasImage = true
-      this.url = file.dataUrl
-    },
-    previewImage: function (event) {
-      var input = event.target
-      if (input.files && input.files[0]) {
-        var reader = new FileReader()
-        reader.onload = (e) => {
-          this.url = e.target.result
-        }
-        reader.readAsDataURL(input.files[0])
-      }
     },
     exportCards: function () {
       var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.card_list))

@@ -94,7 +94,10 @@ export default {
       }
     },
     reset: function () {
-      this.b = Math.floor(Math.random() * this.card_list.length)
+      this.fishs1 = this.card_list.filter(function (o) { return !o.hide }).slice().sort(function () {
+        return Math.random() - 0.5
+      }).slice(0, 4)
+      this.b = Math.floor(Math.random() * this.fishs1.length)
       this.winning = false
       this.loosing = false
       this.progress = 0
