@@ -1,9 +1,9 @@
 {
-  "name": "q-eldergame",
-  "version": "3.4.1",
+  "name": "q-words",
+  "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "認照片遊戲",
-  "cordovaId": "tw.bestian.eldergame",
+  "productName": "認字遊戲",
+  "cordovaId": "tw.bestian.words",
   "author": "Bestian Tang <bestian@gmail.com>",
   "private": true,
   "scripts": {
