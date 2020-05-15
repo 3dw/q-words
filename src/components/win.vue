@@ -3,7 +3,6 @@
     <div class = "page">
       <div class="ui image card">
         <img src="../assets/th.jpg" />
-        <h1 class="text-white shadow">{{ $t('good!') }}</h1>
       </div>
     </div>
   </div>
