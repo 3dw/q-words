@@ -19,11 +19,15 @@ import App from 'app/src/App.vue'
 
 import createRouter from 'app/src/router/index'
 
-export default function () {
+
+
+
+
+export default async function () {
   // create store and router instances
   
   const router = typeof createRouter === 'function'
-    ? createRouter({Vue, })
+    ? await createRouter({Vue})
     : createRouter
   
 
@@ -31,12 +35,14 @@ export default function () {
   // Here we inject the router, store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    el: '#q-app',
     router,
     
     render: h => h(App)
   }
 
+
+  
+  app.el = '#q-app'
   
 
   // expose the app, the router and the store.
