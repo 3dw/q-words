@@ -153,15 +153,9 @@
         </q-item>
       </q-list>
     </q-drawer>
-
     <q-page-container>
       <router-view :card_list="card_list" :human_vs_bot="human_vs_bot" :bot_level="bot_level" @addCard="addCard" @removeCard = "removeCard" @updateCard="updateCard" @hideShow = "hideShow" @saveCards = "saveCards" @johnSay="johnSay"/>
     </q-page-container>
-
-    <q-footer v-if="human_vs_bot && $route.path != '/edit' && $route.path != '/contact'">
-      <q-chat-message avatar="../assets/john.png" :text="[$t(say)]">
-      </q-chat-message>
-    </q-footer>
   </q-layout>
 </template>
 
@@ -210,7 +204,8 @@ export default {
         { name: '木' },
         { name: '水' },
         { name: '火' },
-        { name: '太陽' }
+        { name: '太' },
+        { name: '陽' }
       ]
     }
   },

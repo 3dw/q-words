@@ -16,31 +16,20 @@
         <div class="col" @click="check()" @touchstart="check()">
           <q-card style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)" class="text-white my-card">
             <div class="content" v-show="!hard">
-              <span class="big header">{{card_list[Math.floor(a) % card_list.length].name}}</span>
-            </div>
-            <div class="image">
-              <img class="a" :src="card_list[Math.floor(a) % card_list.length].img">
+              <span class="big header">{{fishs1[Math.floor(a) % fishs1.length].name}}</span>
             </div>
           </q-card>
         </div>
         <div class="col" @click="check()" @touchstart="check()">
           <q-card style="background: radial-gradient(circle, #35a2ff 0%, #393 100%)" class="text-white my-card">
             <div class="content">
-              <span class="big header" v-bind:class="{ only: hard}">{{card_list[b].name}}</span>
-            </div>
-            <div class="image" v-show="!hard">
-              <img class="a" :src="card_list[b].img">
+              <span class="big header">{{fishs1[b].name}}</span>
             </div>
           </q-card>
         </div>
       </div>
     </div>
     <q-select color="purple-12" v-model="speed" :options="options" :label="$t('speed')" />
-    <span>{{$t('img_vs_text')}}:</span>
-    <q-toggle
-      v-model="hard"
-      color="green"
-    />
     <win v-show="winning" ></win>
     <john-win v-show="loosing" ></john-win>
   </q-page>
@@ -57,6 +46,7 @@ export default {
   components: { win, johnWin },
   data () {
     return {
+      fishs1: [],
       loosing: false,
       progress: 0.1,
       a: 0,
@@ -74,27 +64,24 @@ export default {
     go: function () {
       if (!this.winning) {
         this.a += Number(this.speed)
-        if (this.card_list[Math.floor(this.a) % this.card_list.length].hide) {
-          this.go()
-        }
         this.progress += (this.bot_level / 200)
-        var ma = Math.floor(this.a) % this.card_list.length
-        if (this.progress >= 1 && this.card_list[ma].name === this.card_list[this.b].name && this.human_vs_bot) {
+        var ma = Math.floor(this.a) % this.fishs1.length
+        if (this.progress >= 1 && this.fishs1[ma].name === this.fishs1[this.b].name && this.human_vs_bot) {
           this.loose()
         }
       }
     },
     check: function () {
       // console.log('a')
-      var ma = Math.floor(this.a) % this.card_list.length
-      if (this.card_list[ma].name === this.card_list[this.b].name) {
+      var ma = Math.floor(this.a) % this.fishs1.length
+      if (this.fishs1[ma].name === this.fishs1[this.b].name) {
         this.win()
       } else {
         this.bad++
       }
     },
     reset: function () {
-      this.fishs1 = this.card_list.filter(function (o) { return !o.hide }).slice().sort(function () {
+      this.fishs1 = this.card_list.filter(function (o) { return o && !o.hide }).slice().sort(function () {
         return Math.random() - 0.5
       }).slice(0, 4)
       this.b = Math.floor(Math.random() * this.fishs1.length)
@@ -102,9 +89,6 @@ export default {
       this.loosing = false
       this.progress = 0
       this.$emit('johnSay', 'Be relexed...')
-      if (this.card_list[this.b].hide) {
-        this.reset()
-      }
     },
     win: function () {
       this.winning++
@@ -129,8 +113,11 @@ export default {
 <style>
 
 .big.header {
+  display: block;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 33vmin;
+  margin: auto auto;
+  text-align: center;
 }
 
 img {
@@ -142,5 +129,6 @@ img {
   height: 45vmax;
   max-width: 250px;
   padding: 5px;
+  cursor: pointer;
 }
 </style>

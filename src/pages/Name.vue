@@ -15,13 +15,7 @@
     <div class="q-pa-md">
       <div class="row">
         <div class="col">
-          <q-list bordered separator v-if="hard">
-            <q-item clickable v-ripple v-for="(c,idx) in fishs1" v-bind:key="idx" v-show="idx != a && !c.hide">
-              <q-item-section>
-                  <span class="text-white small shadow attached top">{{ c.name }}</span>
-              </q-item-section>
-            </q-item>
-          </q-list>
+          <span class="big header">{{ fishs1[a].name }}</span>
         </div>
         <div class="col">
           <q-list bordered separator>
@@ -35,7 +29,6 @@
       </div>
     </div>
     <q-select color="purple-12" v-model="speed" :options="options" :label="$t('speed')" />
-    <span>{{$t('who_is_missing?')}}:</span>
     <!-- <q-toggle
       v-model="hard"
       color="green"
@@ -58,6 +51,7 @@ export default {
   },
   data () {
     return {
+      fishs1: [],
       winning: false,
       loosing: false,
       record: false,
@@ -84,14 +78,14 @@ export default {
       }
     },
     reset: function () {
+      this.fishs1 = this.card_list.filter(function (o) { return o && !o.hide }).slice().sort(function () {
+        return Math.random() - 0.5
+      }).slice(0, 4)
       this.winning = false
       this.loosing = false
       this.progress = 0
       this.$emit('johnSay', 'Be relexed...')
-      this.a = Math.floor(Math.random() * this.card_list.length)
-      if (this.card_list[this.a].hide) {
-        this.reset()
-      }
+      this.a = Math.floor(Math.random() * this.fishs1.length)
     },
     win: function () {
       this.winning = true
@@ -136,5 +130,13 @@ export default {
 </script>
 
 <style>
+
+.big.header {
+  display: block;
+  font-weight: bold;
+  font-size: 33vmin;
+  margin: auto auto;
+  text-align: center;
+}
 
 </style>
