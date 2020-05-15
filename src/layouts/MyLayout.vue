@@ -221,19 +221,19 @@ export default {
       this.setLocal('card_list')
     },
     getLocal: function (n) {
-      console.log('get:' + n)
+      // console.log('get:' + n)
       this[n] = JSON.parse(this.$q.localStorage.getItem(n))
       // console.log(this[n])
     },
     setLocal: function (n) {
-      console.log('set:' + n)
-      console.log(this[n])
+      // console.log('set:' + n)
+      // console.log(this[n])
       this.$q.localStorage.set(n, JSON.stringify(this[n]))
       // console.log(this.$q.localStorage.getItem(n))
     }
   },
   mounted () {
-    console.log(this.$route.path)
+    // console.log(this.$route.path)
     // console.log(this.$q.localStorage.getItem(n))
     if (this.$q.localStorage.getItem('card_list')) {
       this.getLocal('card_list')

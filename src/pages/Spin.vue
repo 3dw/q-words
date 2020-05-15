@@ -73,7 +73,7 @@ export default {
       }
     },
     reset: function () {
-      console.log('reset')
+      // console.log('reset')
       this.a = Math.floor(Math.random() * this.card_list.length)
       if (this.card_list[this.a].hide) {
         this.reset()
