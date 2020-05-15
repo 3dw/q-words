@@ -2,7 +2,7 @@
 // so you can safely delete all default props below
 
 export default {
-  '/': 'Photo Game',
+  '/': 'Words Game',
   '/edit': 'Editor',
   '/contact': 'Contact',
   '/pair': 'Pairing Game',
@@ -14,8 +14,8 @@ export default {
   privacy: 'Privacy',
   lang: 'lang',
   title: 'Photo Game',
-  intro_0: 'Do you have elders in your family?',
-  intro_1: 'You may use photos of your family members to let the elders rembemer them.',
+  intro_0: 'Do you have a child learning Chinese?',
+  intro_1: 'You may custom your own words to let them rembemer them.',
   failed: 'Action failed',
   success: 'Action was successful',
   home: 'home',
