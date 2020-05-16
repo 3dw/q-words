@@ -12,16 +12,16 @@
       </q-avatar>
       <q-linear-progress stripe rounded style="height: 25px" :value="progress" class="q-mt-md" :color="progress > 0.62 ? 'red' : 'blue'"/>
     </q-toolbar>
-    <div class="q-pa-md">
+    <div class="q-pa-md" v-if="fishs1.length > 0">
       <div class="row">
         <div class="col">
           <span class="big header">{{ fishs1[a].name }}</span>
         </div>
         <div class="col">
           <q-list bordered separator>
-            <q-item v-for = "(c, index) in fishs1" :key = "index" v-show="noDup(index) && !c.hide">
+            <q-item v-for = "(c, index) in fishs1" :key = "index">
               <q-item-section>
-                <button class="big" @click = "b = index; check()" @touchstart="b = index; check()">{{ c.name }}</button>
+                <a class="big" @click = "b = index; check()" @touchstart="b = index; check()">{{ c.name }}</a>
               </q-item-section>
             </q-item>
           </q-list>
@@ -115,7 +115,7 @@ export default {
     },
     noDup: function (idx) {
       for (var i = 0; i < idx; i++) {
-        if (this.card_list[i].name === this.card_list[idx].name) {
+        if (this.fishs1[i].name === this.fishs1[idx].name) {
           return false
         }
       }
@@ -139,7 +139,7 @@ export default {
   text-align: center;
 }
 
-button {
+a.big {
   font-size: 20vmin;
 }
 

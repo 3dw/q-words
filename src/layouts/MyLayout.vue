@@ -130,11 +130,9 @@
             <q-select color="purple-12" v-model="bot_level" :options="options" :label="$t('bot_level')" @input="saveBotLev()" />
           </q-item-section>
         </q-item> -->
-        <q-item>
+        <q-item clickable v-ripple @click.native="$router.push('/pair'); rightDrawerOpen = false; human_vs_bot = true" >
           <q-chat-message avatar="../assets/john.png" :text="says.map((o) => $t(o))">
           </q-chat-message>
-        </q-item>
-        <q-item clickable v-ripple @click.native="$router.push('/pair'); rightDrawerOpen = false; human_vs_bot = true" >
         </q-item>
       </q-list>
     </q-drawer>

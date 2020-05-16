@@ -12,6 +12,7 @@ export default {
   '/privacy': 'Privacy',
   '/write': 'Writing Game',
   write_game: 'Writing Game',
+  write_note: 'Please write down the word',
   privacy_note: 'Privacy Notice: All photos and materials you store in the "Photo Game" are stored only on your machine, independent of others, and developers will not collect them. ',
   privacy: 'Privacy',
   lang: 'lang',

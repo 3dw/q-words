@@ -21,9 +21,9 @@
           </q-card>
         </div>
         <div class="col">
-          <q-card style="background: radial-gradient(circle, #35a2ff 0%, #393 100%)" class="text-white my-card">
+          <q-card class="text-white my-card">
             <div class="content">
-              <q-input type="text" name="ans" class="big header" v-model="ans" :autofocus="true"></q-input>
+              <q-input type="text" name="ans" class="big header" clearable outlined v-model="ans" :autofocus="true"></q-input>
             </div>
           </q-card>
         </div>
@@ -119,7 +119,7 @@ export default {
 .big.header {
   display: block;
   font-weight: bold;
-  font-size: 33vmin;
+  font-size: 33vmin !important;
   margin: auto auto;
   text-align: center;
 }

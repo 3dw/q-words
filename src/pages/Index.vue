@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/aged1.jpeg">
+    <img alt="Quasar logo" src="~assets/aged1.jpeg" @click="$router.push({ path: '/name' })" />
     <p>
     {{$t('intro_0')}}<br/>
     {{$t('intro_1')}}
