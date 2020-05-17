@@ -1,7 +1,7 @@
 {
   "name": "tw.bestian.word",
   "displayName": "認字遊戲",
-  "version": "1.0.0",
+  "version": "1.0.8",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "cordova-android": "^8.0.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-wkwebview-engine": "^1.2.1",
     "ioss": "^1.0.0"
   },
   "devDependencies": {
@@ -24,7 +25,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-wkwebview-engine": {}
     },
     "platforms": [
       "android",

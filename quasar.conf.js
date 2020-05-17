@@ -76,7 +76,7 @@ module.exports = function (ctx) {
       ]
     },
 
-    supportIE: false,
+    supportIE: true,
 
     build: {
       scopeHoisting: true,

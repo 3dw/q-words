@@ -157,6 +157,6 @@ export default {
 }
 
 .header {
-  font-size: 18vw;
+  font-size: 18vmin;
 }
 </style>

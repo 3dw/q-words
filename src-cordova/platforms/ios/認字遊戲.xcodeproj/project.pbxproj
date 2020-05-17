@@ -16,6 +16,10 @@
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		B53F195BADFE450094407F64 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BC619D1216154C1F91B78BA4 /* CDVViewController+SplashScreen.m */; };
+		84EE8E63118E4E3CA210BA78 /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D33BA8CD554C30B43E0E40 /* CDVWKWebViewEngine.m */; };
+		97B63A68029E45C8B000C965 /* CDVWKWebViewUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EAD411F57574359A86B9F47 /* CDVWKWebViewUIDelegate.m */; };
+		47A7638F27334A269717CA21 /* CDVWKProcessPoolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B93BBE09CCE3462A8BDFF882 /* CDVWKProcessPoolFactory.m */; };
+		F63239F7CAD647C29388A9AD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF895BD57DA4857B080E1CE /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,13 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "認字遊戲/config.xml"; sourceTree = "<group>"; };
+		F6D33BA8CD554C30B43E0E40 /* CDVWKWebViewEngine.m */ = {isa = PBXFileReference; name = "CDVWKWebViewEngine.m"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2EAD411F57574359A86B9F47 /* CDVWKWebViewUIDelegate.m */ = {isa = PBXFileReference; name = "CDVWKWebViewUIDelegate.m"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		B93BBE09CCE3462A8BDFF882 /* CDVWKProcessPoolFactory.m */ = {isa = PBXFileReference; name = "CDVWKProcessPoolFactory.m"; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		054732646D71402DA6B68E68 /* CDVWKWebViewEngine.h */ = {isa = PBXFileReference; name = "CDVWKWebViewEngine.h"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewEngine.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		205660B40FBD44ADBE991BA0 /* CDVWKWebViewUIDelegate.h */ = {isa = PBXFileReference; name = "CDVWKWebViewUIDelegate.h"; path = "cordova-plugin-wkwebview-engine/CDVWKWebViewUIDelegate.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		01C840F5F01C49E6BEB877F0 /* CDVWKProcessPoolFactory.h */ = {isa = PBXFileReference; name = "CDVWKProcessPoolFactory.h"; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		4DF895BD57DA4857B080E1CE /* WebKit.framework */ = {isa = PBXFileReference; name = "WebKit.framework"; path = "System/Library/Frameworks/WebKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				F63239F7CAD647C29388A9AD /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +157,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4DF895BD57DA4857B080E1CE /* WebKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,6 +188,12 @@
 				BC619D1216154C1F91B78BA4 /* CDVViewController+SplashScreen.m */,
 				107F72E2AA3E4E88B29A3522 /* CDVSplashScreen.h */,
 				6E20E01FF9F3465FA2E19C38 /* CDVViewController+SplashScreen.h */,
+				F6D33BA8CD554C30B43E0E40 /* CDVWKWebViewEngine.m */,
+				2EAD411F57574359A86B9F47 /* CDVWKWebViewUIDelegate.m */,
+				B93BBE09CCE3462A8BDFF882 /* CDVWKProcessPoolFactory.m */,
+				054732646D71402DA6B68E68 /* CDVWKWebViewEngine.h */,
+				205660B40FBD44ADBE991BA0 /* CDVWKWebViewUIDelegate.h */,
+				01C840F5F01C49E6BEB877F0 /* CDVWKProcessPoolFactory.h */,
 			);
 			name = Plugins;
 			path = "認字遊戲/Plugins";
@@ -307,6 +326,9 @@
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				25CE79C416974D14B3017ACF /* CDVSplashScreen.m in Sources */,
 				B53F195BADFE450094407F64 /* CDVViewController+SplashScreen.m in Sources */,
+				84EE8E63118E4E3CA210BA78 /* CDVWKWebViewEngine.m in Sources */,
+				97B63A68029E45C8B000C965 /* CDVWKWebViewUIDelegate.m in Sources */,
+				47A7638F27334A269717CA21 /* CDVWKProcessPoolFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

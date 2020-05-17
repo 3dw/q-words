@@ -10,6 +10,8 @@
  * Boot files are your "main.js"
  **/
 
+import 'quasar/dist/quasar.ie.polyfills.js'
+
 
 
 import '@quasar/extras/roboto-font/roboto-font.css'
@@ -32,6 +34,9 @@ import Vue from 'vue'
 import createApp from './app.js'
 
 
+import 'app/src-pwa/register-service-worker.js'
+
+
 
 
 import qboot_Booti18n from 'boot/i18n'
@@ -46,7 +51,10 @@ import qboot_Booti18n from 'boot/i18n'
 
 
 
-import '@quasar/fastclick'
+// Needed only for iOS PWAs
+if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream && window.navigator.standalone) {
+  import(/* webpackChunkName: "fastclick"  */ '@quasar/fastclick')
+}
 
 
 async function start () {
@@ -101,16 +109,11 @@ async function start () {
     
 
     
-    document.addEventListener('deviceready', () => {
-    Vue.prototype.$q.cordova = window.cordova
-    
 
     
       new Vue(app)
     
 
-    
-    }, false) // on deviceready
     
 
     

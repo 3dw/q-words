@@ -18,6 +18,11 @@
             }
           ]
         }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": []
+        }
       }
     }
   },
@@ -27,6 +32,9 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "tw.bestian.eldergame"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "tw.bestian.word"
     }
   },
   "dependent_plugins": {},
@@ -42,6 +50,7 @@
   ],
   "plugin_metadata": {
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-splashscreen": "5.0.2"
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-wkwebview-engine": "1.2.1"
   }
 }
