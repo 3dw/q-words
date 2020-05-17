@@ -23,7 +23,7 @@
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
     </feature>
-    <name>Word Game</name>
+    <name>認字遊戲</name>
     <description>A Quasar Framework app</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
