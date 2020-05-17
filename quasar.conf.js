@@ -154,8 +154,8 @@ module.exports = function (ctx) {
 
     cordova: {
        id: 'tw.bestian.word',
-       version: '1.0.3',
-    //   noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
+       version: '1.0.6',
+       noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
     electron: {
@@ -170,7 +170,7 @@ module.exports = function (ctx) {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
 
         // OS X / Mac App Store
-        appBundleId: 'tw.bestian.eldergame',
+        appBundleId: 'tw.bestian.word',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
@@ -182,7 +182,7 @@ module.exports = function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'tw.bestian.eldergame'
+        appId: 'tw.bestian.word'
       }
     }
   }
