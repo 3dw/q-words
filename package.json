@@ -2,8 +2,8 @@
   "name": "q-words",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "認字遊戲",
-  "cordovaId": "tw.bestian.words",
+  "productName": "q-words",
+  "cordovaId": "tw.bestian.word",
   "author": "Bestian Tang <bestian@gmail.com>",
   "private": true,
   "scripts": {

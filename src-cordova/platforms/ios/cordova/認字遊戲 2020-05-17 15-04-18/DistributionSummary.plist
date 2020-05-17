@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>認字遊戲.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>2F239479A37FF108CA8D61374EEBC6E7CE31CE87</string>
+				<key>dateExpires</key>
+				<string>2021/2/21</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>CH52K8X2PC.tw.bestian.word</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>CH52K8X2PC</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>認字遊戲.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>d83fe6cc-5f50-445c-9733-7d911597cb9b</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: tw.bestian.word</string>
+			</dict>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>CH52K8X2PC</string>
+				<key>name</key>
+				<string>Tsung-Hao  Tang</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -32,9 +32,6 @@ import Vue from 'vue'
 import createApp from './app.js'
 
 
-import 'app/src-pwa/register-service-worker.js'
-
-
 
 
 import qboot_Booti18n from 'boot/i18n'
@@ -49,10 +46,7 @@ import qboot_Booti18n from 'boot/i18n'
 
 
 
-// Needed only for iOS PWAs
-if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream && window.navigator.standalone) {
-  import(/* webpackChunkName: "fastclick"  */ '@quasar/fastclick')
-}
+import '@quasar/fastclick'
 
 
 async function start () {
@@ -107,11 +101,16 @@ async function start () {
     
 
     
+    document.addEventListener('deviceready', () => {
+    Vue.prototype.$q.cordova = window.cordova
+    
 
     
       new Vue(app)
     
 
+    
+    }, false) // on deviceready
     
 
     
