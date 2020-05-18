@@ -75,6 +75,7 @@ export default {
       // console.log('a')
       var ma = Math.floor(this.a) % this.fishs1.length
       if (this.fishs1[ma].name === this.ans) {
+        this.ans = ''
         this.win()
       } else {
         this.bad++
