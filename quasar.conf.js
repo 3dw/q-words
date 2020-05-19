@@ -154,7 +154,7 @@ module.exports = function (ctx) {
 
     cordova: {
        id: 'tw.bestian.word',
-       version: '1.0.9',
+       version: '1.0.10',
        noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
