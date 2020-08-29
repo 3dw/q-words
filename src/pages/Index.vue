@@ -8,7 +8,7 @@
     <q-btn-group big push>
       <q-btn big push :label="$t('game')" icon="visibility" @click="$router.push({ path: '/pair' })" />
       <q-btn big push :label="$t('setting')" icon="settings" @click="$router.push({ path: '/edit' })"  />
-      <q-btn big push type="a" href="https://ren-zi-you-xi.flycricket.io/?t=1589845222" target="_blank" label="安裝App" icon="phone" color="purple" />
+      <!-- <q-btn big push type="a" href="https://ren-zi-you-xi.flycricket.io/?t=1589845222" target="_blank" label="安裝App" icon="phone" color="purple" /> -->
     </q-btn-group>
   </q-page>
 </template>
