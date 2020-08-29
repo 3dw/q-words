@@ -1,6 +1,6 @@
 {
   "name": "q-words",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A Quasar Framework app",
   "productName": "q-words",
   "cordovaId": "tw.bestian.word",
