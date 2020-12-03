@@ -4,7 +4,7 @@
 set -e
 
 # build
-quasar build -m pwa
+quasar build -m pwa --modern
 
 # navigate into the build output directory
 cd dist/pwa

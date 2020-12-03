@@ -88,6 +88,7 @@
     <div class="print-only">
       <img :src = "'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://www.moedict.tw/' + pre + w + '&choe=UTF-8'" />
     </div>
+    <!--
     <br/>
     <div class = "soc no-print">
       <q-btn size="xs" color = "primary" class="facebook">
@@ -102,7 +103,7 @@
           <q-icon name = "fab fa-twitter" />
         </a>
       </q-btn>
-    </div>
+    </div> -->
   </q-page>
 </template>
 
@@ -137,7 +138,7 @@ export default {
   },
   methods: {
     bucketOf: function (it) {
-      console.log(it)
+      // console.log(it)
       var code
       if (/^[=@]/.exec(it)) {
         return it[0]
@@ -163,7 +164,7 @@ export default {
         part = part.slice(0, idx) */
         var key = escape(id)
         var part = response.data[key]
-        console.log(part)
+        // console.log(part)
         this.data = part
         // console.log(this.data)
         if (this.data) {
@@ -172,8 +173,7 @@ export default {
         this.playing = false
         // addToLru(id)
       }).catch(err => {
-        this.err = true
-        console.log(err)
+        this.err = true || err
       })
     },
     closeD () {
@@ -328,7 +328,7 @@ export default {
   },
   watch: {
     $route (to, from) {
-      console.log('w')
+      // console.log('w')
       this.set()
     }
   }

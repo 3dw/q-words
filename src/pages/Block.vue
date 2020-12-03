@@ -32,7 +32,7 @@ export default {
     },
     addItem () {
       const w = this.card_list[Math.floor(Math.random() * this.card_list.length)]
-      console.log(w)
+      // console.log(w)
       this.items.push({ w: w.name, y: 0, hide: false })
     },
     go () {

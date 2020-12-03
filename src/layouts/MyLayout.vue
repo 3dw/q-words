@@ -249,7 +249,7 @@ export default {
       if (typeof k !== 'undefined') {
         si = k
       }
-      console.log(si)
+      // console.log(si)
       if (!si) { si = false }
       this.si = si
       this.$q.localStorage.set('si', si)
@@ -346,7 +346,7 @@ export default {
           e.setAttribute('rel', 'noreferrer')
           e.addEventListener('click', function (event) {
             event.preventDefault()
-            console.log(this.getAttribute('data-h'))
+            // console.log(this.getAttribute('data-h'))
             vm.$router.push('/w/' + this.getAttribute('data-h'))
             var x = document.getElementsByClassName('gsc-modal-background-image gsc-modal-background-image-visible')
             x[0].click()
