@@ -46,8 +46,6 @@ import qboot_Booti18n from 'boot/i18n'
 
 
 
-import '@quasar/fastclick'
-
 
 async function start () {
   const { app, router } = await createApp()
