@@ -1,6 +1,10 @@
 import VueI18n from 'vue-i18n'
 import messages from 'src/i18n'
 import ImageUploader from 'vue-image-upload-resize'
+import Vue from 'vue'
+import axios from 'axios'
+
+Vue.prototype.$axios = axios
 
 export default async ({ app, Vue }) => {
   Vue.use(VueI18n)

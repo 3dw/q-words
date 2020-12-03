@@ -15,14 +15,14 @@
       <div class="row">
         <div class="col" @click="check()" @touchstart="check()">
           <q-card style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)" class="text-white my-card">
-            <div class="content" v-show="!hard">
+            <div class="content" v-if = "fishs1[0]" v-show="!hard">
               <span class="big header">{{fishs1[Math.floor(a) % fishs1.length].name}}</span>
             </div>
           </q-card>
         </div>
         <div class="col" @click="check()" @touchstart="check()">
           <q-card style="background: radial-gradient(circle, #35a2ff 0%, #393 100%)" class="text-white my-card">
-            <div class="content">
+            <div class="content" v-if = "fishs1[0]">
               <span class="big header">{{fishs1[b].name}}</span>
             </div>
           </q-card>

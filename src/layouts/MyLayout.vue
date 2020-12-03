@@ -13,18 +13,15 @@
         </q-btn>
 
         <q-toolbar-title>
-          {{$t($route.path)}}
+          <input id="s" type="search" name="s" v-model="myKey" list="words" :placeholder="s('輸入字詞')" @keydown.enter="$router.push('/w/' + pre + myKey)"/>
+          <label for="s"></label>
+          <datalist id ="words">
+            <option v-for = "d in has(data, myKey).slice(0,n)" :key="d" :value="d"></option>
+            }
+          </datalist>
+          <button @click="$router.push('/w/' + pre + myKey)">{{ s('查詢') }}</button>
         </q-toolbar-title>
-
-        <div class="q-gutter-md">
-          <q-select
-            v-model="$i18n.locale"
-            :options="langs"
-            :label="$t('lang')"
-            emit-value
-          />
-        </div>
-
+<!--
         <q-btn
           flat
           dense
@@ -35,7 +32,7 @@
           <q-avatar>
             <img src="../assets/john.png"/>
           </q-avatar>
-        </q-btn>
+        </q-btn> -->
       </q-toolbar>
     </q-header>
 
@@ -94,6 +91,14 @@
             {{$t('write_game')}}
           </q-item-section>
         </q-item>
+        <q-item clickable @click.native="$router.push('/block')" v-ripple>
+          <q-item-section avatar>
+            <q-icon name="all_out" />
+          </q-item-section>
+          <q-item-section>
+            {{$t('block_game')}}
+          </q-item-section>
+        </q-item>
         <q-item-label header>{{$t('setting')}}</q-item-label>
         <q-item clickable @click.native="$router.push('/edit')" v-ripple>
           <q-item-section avatar>
@@ -103,9 +108,17 @@
             {{$t('edit')}}
           </q-item-section>
         </q-item>
+        <q-item>
+          <q-select
+            v-model="$i18n.locale"
+            :options="langs"
+            :label="$t('lang')"
+            emit-value
+          />
+        </q-item>
       </q-list>
     </q-drawer>
-
+    <!--
     <q-drawer
       side="right"
       v-model="rightDrawerOpen"
@@ -125,30 +138,35 @@
             />
           </q-item-section>
         </q-item>
-        <!-- <q-item v-if="human_vs_bot">
-          <q-item-section>
-            <q-select color="purple-12" v-model="bot_level" :options="options" :label="$t('bot_level')" @input="saveBotLev()" />
-          </q-item-section>
-        </q-item> -->
         <q-item clickable v-ripple @click.native="$router.push('/pair'); rightDrawerOpen = false; human_vs_bot = true" >
           <q-chat-message avatar="../assets/john.png" :text="says.map((o) => $t(o))">
           </q-chat-message>
         </q-item>
       </q-list>
     </q-drawer>
+  -->
     <q-page-container>
-      <router-view :card_list="card_list" :human_vs_bot="human_vs_bot" :bot_level="bot_level" @addCard="addCard" @removeCard = "removeCard" @updateCard="updateCard" @hideShow = "hideShow" @saveCards = "saveCards" @johnSay="johnSay"/>
+      <div class="gcse-search"></div>
+      <router-view  @updateStars = "updateStars" @updateSi = "s1" @pre1="pre1"  @closeD = "closeD" :si="si" :stars="stars" :card_list="card_list" :human_vs_bot="human_vs_bot" :bot_level="bot_level" @addCard="addCard" @removeCard = "removeCard" @updateCard="updateCard" @hideShow = "hideShow" @saveCards = "saveCards" @johnSay="johnSay"/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { openURL } from 'quasar'
+import { sify } from 'chinese-conv'
 
 export default {
   name: 'MyLayout',
   data () {
     return {
+      n: 50,
+      myKey: '',
+      pre: '',
+      url: 'a',
+      data: [],
+      stars: [],
+      si: false,
       say: 'hello! I\'m John',
       says: [
         'hello! I\'m John',
@@ -196,6 +214,63 @@ export default {
     }
   },
   methods: {
+    closeD () {
+      this.leftDrawerOpen = false
+    },
+    pre1 (p, u) {
+      p = this.$q.localStorage.getItem('pre') || p || ''
+      u = this.$q.localStorage.getItem('url') || u || ''
+      this.pre = p
+      this.url = u
+      this.$axios.get('statics/' + this.url + '/index.json')
+        .then((response) => {
+          this.data = response.data
+        })
+    },
+    updateStars () {
+      this.stars = this.$q.localStorage.getItem('words') || []
+    },
+    has (data, k) {
+      // console.log(data)
+      if (!k) {
+        return []
+      }
+      return data.filter((x) => { return x.indexOf(k) > -1 })
+    },
+    s (t) {
+      if (this.si) {
+        return sify(t)
+      } else {
+        return t
+      }
+    },
+    s1 (k) {
+      var si = this.$q.localStorage.getItem('si')
+      if (typeof k !== 'undefined') {
+        si = k
+      }
+      console.log(si)
+      if (!si) { si = false }
+      this.si = si
+      this.$q.localStorage.set('si', si)
+    },
+    deep () {
+      var p = this.s('全站搜尋')
+      window.IS_GOOGLE_AFS_IFRAME_ = true
+      const cx = '007966820757635393756:sasf0rnevk4'
+      var gcse = document.createElement('script')
+      gcse.type = 'text/javascript'
+      gcse.async = true
+      gcse.src = '//www.google.com/cse/cse.js?cx=' + cx
+      var s = document.getElementsByTagName('script')[0]
+      s.parentNode.insertBefore(gcse, s)
+      setInterval(function () {
+        var e = document.getElementById('gsc-i-id1')
+        if (e) {
+          e.setAttribute('placeholder', p)
+        }
+      }, 500)
+    },
     openURL,
     saveBot: function () {
       this.setLocal('human_vs_bot')
@@ -239,6 +314,7 @@ export default {
     }
   },
   mounted () {
+    var vm = this
     // console.log(this.$route.path)
     // console.log(this.$q.localStorage.getItem(n))
     if (this.$q.localStorage.getItem('card_list')) {
@@ -250,9 +326,62 @@ export default {
     if (this.$q.localStorage.getItem('human_vs_bot')) {
       this.getLocal('human_vs_bot')
     }
+    this.deep()
+    this.$axios.get('https://www.moedict.tw/' + this.url + '/index.json')
+      .then((response) => {
+        this.data = response.data
+      })
+    setInterval(function () {
+      var list = document.getElementsByClassName('gs-title')
+      for (var i = 0; i < list.length; i++) {
+        const e = list[i]
+        if (e.getAttribute('href')) {
+          var l = e.getAttribute('href')
+          l = ('' + l).replace('https://www.moedict.tw/', '')
+          e.removeAttribute('href')
+          e.removeAttribute('data-cturl')
+          e.removeAttribute('data-ctorig')
+          e.setAttribute('data-h', l)
+          e.setAttribute('target', 'self')
+          e.setAttribute('rel', 'noreferrer')
+          e.addEventListener('click', function (event) {
+            event.preventDefault()
+            console.log(this.getAttribute('data-h'))
+            vm.$router.push('/w/' + this.getAttribute('data-h'))
+            var x = document.getElementsByClassName('gsc-modal-background-image gsc-modal-background-image-visible')
+            x[0].click()
+            vm.$forceUpdate()
+          })
+        }
+      }
+    }, 1000)
   }
 }
 </script>
 
 <style>
+  #s {
+    width: 130px !important;
+  }
+
+  @media screen and (min-width: 420px) {
+    #s {
+      width: 250px !important;
+    }
+  }
+
+  a.btn {
+    text-decoration: none;
+    margin: 0 .2em;
+    cursor: pointer;
+  }
+
+  .ellipsis {
+    text-overflow: inherit;
+  }
+
+  .q-btn__wrapper:before {
+    box-shadow: none;
+  }
+
 </style>

@@ -44,6 +44,7 @@ export default {
   'who_is_this?': 'Who is this one？',
   'spin_game': 'Spinning Game',
   'spin_note': 'Click image when it turn to center',
+  'block_game': 'Block Game',
   '3d_spin': '3D spin',
   'fishing_game': 'Fishing Game',
   'fishing_note': 'Click and find the same card pair',
@@ -58,5 +59,7 @@ export default {
   'I\'m thinking...': 'I\'m thinking...',
   'Be relexed...': 'Be relexed...',
   'I win!': 'I win!',
-  'You win!': 'You win!'
+  'You win!': 'You win!',
+  'Type and Shoot': 'Type and Shoot',
+  'Shoot': 'Shoot'
 }

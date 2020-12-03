@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.9.5",
+    "axios": "^0.21.0",
+    "chinese-conv": "^1.0.1",
     "quasar": "^1.13.1",
     "vue-i18n": "^8.0.0",
     "vue-image-upload-resize": "^2.0.4"

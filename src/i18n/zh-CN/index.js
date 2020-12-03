@@ -25,6 +25,7 @@ export default {
   pair: '配对',
   pair_game: '配对游戏',
   pair_note: '出现同一字时，请按其中一张卡',
+  block_game: '方塊游戏',
   speed: '速度',
   'img_vs_text': '字配图',
   game: '游戏',
@@ -60,5 +61,7 @@ export default {
   'I\'m thinking...': '我在想...',
   'Be relexed...': '放轻松...',
   'I win!': '我赢了!',
-  'You win!': '你赢了!'
+  'You win!': '你赢了!',
+  'Type and Shoot': '打字射擊',
+  'Shoot': '射擊'
 }
