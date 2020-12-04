@@ -112,12 +112,30 @@ module.exports = function (ctx) {
     },
 
     pwa: {
+      workboxPluginMode: 'GenerateSW',
       // workboxPluginMode: 'InjectManifest',
-      // workboxOptions: {}, // only for NON InjectManifest
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true,
+        maximumFileSizeToCacheInBytes: 5000000,
+        exclude: [/.(?:png|jpg|jpeg|svg|txt)$/],
+        runtimeCaching: [
+          {
+            // Match any request ends with .png, .jpg, .jpeg or .svg.
+            urlPattern: /.(?:png|jpg|jpeg|svg|txt)$/,
+            // Apply a cache-first strategy.
+            handler: "CacheFirst",
+            options: {
+              // Use a custom cache name.
+              cacheName: "images"
+            }
+          }
+        ]
+      }, // only for NON InjectManifest
       manifest: {
-        // name: '認照片遊戲',
-        // short_name: '認照片遊戲',
-        // description: 'A Quasar Framework app',
+        name: '認字遊戲',
+        short_name: '認字遊戲',
+        description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
