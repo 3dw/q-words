@@ -42,13 +42,13 @@ export default {
         this.addItem()
       }
       this.items = this.items.map((o) => {
-        if (o.moving) {
-          o.y++
-        }
         if (o.y >= 400 - this.items.filter((o) => {
           return !o.moving
         }).length * 54) {
           o.moving = false
+        }
+        if (o.moving) {
+          o.y++
         }
         return o
       })
