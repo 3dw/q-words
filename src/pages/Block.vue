@@ -27,6 +27,7 @@ export default {
     fire (hit) {
       this.score += this.items.filter((o) => { return o.w === hit }).length
       this.items = this.items.filter((o) => { return o.w !== hit })
+      this.items.map((o) => { o.moving = true; return o })
       this.hit = ''
       this.$forceUpdate()
     },
