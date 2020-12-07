@@ -33,17 +33,24 @@ export default {
     addItem () {
       const w = this.card_list[Math.floor(Math.random() * this.card_list.length)]
       // console.log(w)
-      this.items.push({ w: w.name, y: 0, hide: false })
+      this.items.push({ w: w.name, y: 0, hide: false, moving: true })
     },
     go () {
       this.t++
-      if (this.t % 100 === 0) {
+      if (this.t % 100 === 0 && this.items.filter((o) => { return !o.moving }).length * 54 < 400) {
         this.addItem()
       }
       this.items = this.items.map((o) => {
-        o.y++
+        if (o.moving) {
+          o.y++
+        }
+        if (o.y >= 400 - this.items.filter((o) => {
+          return !o.moving
+        }).length * 54) {
+          o.moving = false
+        }
         return o
-      }).filter((o) => { return o.y < 400 })
+      })
       this.$forceUpdate()
     }
   },
