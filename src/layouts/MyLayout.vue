@@ -146,7 +146,7 @@
     </q-drawer>
   -->
     <q-page-container>
-      <div class="gcse-search"></div>
+      <!-- <div class="gcse-search"></div> -->
       <router-view  @updateStars = "updateStars" @updateSi = "s1" @pre1="pre1"  @closeD = "closeD" :si="si" :stars="stars" :card_list="card_list" :human_vs_bot="human_vs_bot" :bot_level="bot_level" @addCard="addCard" @removeCard = "removeCard" @updateCard="updateCard" @hideShow = "hideShow" @saveCards = "saveCards" @johnSay="johnSay"/>
     </q-page-container>
   </q-layout>
@@ -199,17 +199,17 @@ export default {
         { name: '八' },
         { name: '九' },
         { name: '十' },
-        { name: '春' },
+        // { name: '春' },
         { name: '日' },
         { name: '土' },
         { name: '木' },
         { name: '水' },
         { name: '火' },
         { name: '太' },
-        { name: '陽' },
-        { name: '丁' },
-        { name: '好' },
-        { name: '我' }
+        // { name: '陽' },
+        { name: '丁' }
+        // { name: '好' },
+        // { name: '我' }
       ]
     }
   },
@@ -314,7 +314,7 @@ export default {
     }
   },
   mounted () {
-    var vm = this
+    // var vm = this
     // console.log(this.$route.path)
     // console.log(this.$q.localStorage.getItem(n))
     if (this.$q.localStorage.getItem('card_list')) {
@@ -326,11 +326,11 @@ export default {
     if (this.$q.localStorage.getItem('human_vs_bot')) {
       this.getLocal('human_vs_bot')
     }
-    this.deep()
     this.$axios.get('https://www.moedict.tw/' + this.url + '/index.json')
       .then((response) => {
         this.data = response.data
       })
+    /* this.deep()
     setInterval(function () {
       var list = document.getElementsByClassName('gs-title')
       for (var i = 0; i < list.length; i++) {
@@ -354,7 +354,7 @@ export default {
           })
         }
       }
-    }, 1000)
+    }, 1000) */
   }
 }
 </script>
