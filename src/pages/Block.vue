@@ -1,9 +1,9 @@
 <template>
   <q-page>
-    <div v-show = "!start">
+    <div class = "info" v-show = "!start">
       <h3>打字消方塊遊戲</h3>
       <p>打字可以消去掉落的方塊</p>
-      <p>如果方塊疊滿就輸入</p>
+      <p>如果方塊疊滿就輸了</p>
       <q-btn :size = "'xl'" color = "primary" @click = "start = true">{{$t('start')}}</q-btn>
     </div>
     <div v-show = "start">
@@ -95,6 +95,9 @@ export default {
 </script>
 
 <style type="text/css" scoped="">
+  .info {
+    padding: 2em 2em;
+  }
   .block {
     position: absolute;
     font-size: 36px;
