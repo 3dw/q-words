@@ -1,11 +1,21 @@
 <template>
   <q-page>
-    <div class="block" v-for="(item, idx) in items" :key = "idx" :style = "{left: item.x + 'px', top: 100 + item.y + 'px', 'background-color': item.bg}">
-        <span>{{ item.w }}</span>
+    <div v-show = "!start">
+      <h3>打字消方塊遊戲</h3>
+      <p>打字可以消去掉落的方塊</p>
+      <p>如果方塊疊滿就輸入</p>
+      <q-btn :size = "'xl'" color = "primary" @click = "start = true">{{$t('start')}}</q-btn>
     </div>
-    <q-input filled bottom-slots :autofocus="true" name="" v-model="hit" :label="$t('Type and Shoot')" @keydown.enter = "fire(hit)"/>
-    <q-btn color = "primary" @click = "fire(hit)">{{$t('Shoot')}}! 目前 {{ score }} 分</q-btn>
-    <q-btn color = "secondary" v-show="die" @click = "reset()"> 重來! </q-btn>
+    <div v-show = "start">
+      <div class="block" v-for="(item, idx) in items" :key = "idx" :style = "{left: item.x + 'px', top: 100 + item.y + 'px', 'background-color': item.bg}">
+          <span>{{ item.w }}</span>
+      </div>
+    </div>
+    <div v-show = "start">
+      <q-input filled bottom-slots :autofocus="true" name="" v-model="hit" :label="$t('Type and Shoot')" @keydown.enter = "fire(hit)"/>
+      <q-btn color = "primary" @click = "fire(hit)">{{$t('Shoot')}}! 目前 {{ score }} 分</q-btn>
+      <q-btn color = "secondary" v-show="die" @click = "reset()"> 重來! </q-btn>
+    </div>
   </q-page>
 </template>
 
@@ -27,6 +37,7 @@ export default {
   props: ['card_list'],
   methods: {
     reset () {
+      this.start = false
       this.die = false
       this.score = 0
       this.t = 50
@@ -34,11 +45,13 @@ export default {
       this.ultra = 0
     },
     fire (hit) {
-      this.score += this.items.filter((o) => { return o.w === hit }).length
-      this.items = this.items.filter((o) => { return o.w !== hit })
-      this.items.map((o) => { o.moving = true; return o })
-      this.hit = ''
-      this.$forceUpdate()
+      if (!this.die) {
+        this.score += this.items.filter((o) => { return o.w === hit }).length
+        this.items = this.items.filter((o) => { return o.w !== hit })
+        this.items.map((o) => { o.moving = true; return o })
+        this.hit = ''
+        this.$forceUpdate()
+      }
     },
     addItem (x) {
       const w = this.card_list[Math.floor(Math.random() * this.card_list.length)]
@@ -47,9 +60,9 @@ export default {
       this.items.push({ w: w.name, y: 0, hide: false, moving: true, bg: cs[Math.floor(Math.random() * cs.length)], x: x })
     },
     go () {
-      if (!this.die) {
+      if (!this.die && this.start) {
         this.t++
-        // this.t += this.ultra
+        this.t += this.score / 10
       }
       const xs = [0, 54, 108, 162, 216, 270]
       const x = xs[Math.floor(Math.random() * xs.length)]
@@ -57,7 +70,6 @@ export default {
         this.t = 0
         if (this.items.filter((o) => { return !o.moving && o.x === x }).length * 54 < 300 && !this.die) {
           this.addItem(x)
-          this.ultra += 0.1
         } else {
           this.die = true
         }

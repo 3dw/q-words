@@ -63,5 +63,6 @@ export default {
   'I win!': '我贏了!',
   'You win!': '你贏了!',
   'Type and Shoot': '打字射擊',
-  'Shoot': '射擊'
+  'Shoot': '射擊',
+  'start': '開始'
 }
