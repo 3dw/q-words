@@ -19,6 +19,7 @@ export default {
       // words: ['大', '中', '小', '太', '山', '人', '一', '二', '三'],
       // '天', '早', '心', '陽'],
       t: 50,
+      ultra: 0,
       score: 0,
       die: false
     }
@@ -30,6 +31,7 @@ export default {
       this.score = 0
       this.t = 50
       this.items = []
+      this.ultra = 0
     },
     fire (hit) {
       this.score += this.items.filter((o) => { return o.w === hit }).length
@@ -47,12 +49,15 @@ export default {
     go () {
       if (!this.die) {
         this.t++
+        // this.t += this.ultra
       }
       const xs = [0, 54, 108, 162, 216, 270]
       const x = xs[Math.floor(Math.random() * xs.length)]
-      if (this.t % 100 === 0) {
+      if (this.t > 60) {
+        this.t = 0
         if (this.items.filter((o) => { return !o.moving && o.x === x }).length * 54 < 300 && !this.die) {
           this.addItem(x)
+          this.ultra += 0.1
         } else {
           this.die = true
         }
