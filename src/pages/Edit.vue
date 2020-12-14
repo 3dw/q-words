@@ -20,10 +20,11 @@
             {{$t('delete')}}
           </q-btn>
         </q-item-section>
+        <!--
         <q-item-section>
           {{$t('hide')}}
           <q-toggle v-model="c.hide"/>
-        </q-item-section>
+        </q-item-section> -->
       </q-item>
       <q-item>
         <q-item-section>

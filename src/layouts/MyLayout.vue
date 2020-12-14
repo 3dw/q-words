@@ -148,6 +148,7 @@
     <q-page-container>
       <!-- <div class="gcse-search"></div> -->
       <router-view  @updateStars = "updateStars" @updateSi = "s1" @pre1="pre1"  @closeD = "closeD" :si="si" :stars="stars" :card_list="card_list" :human_vs_bot="human_vs_bot" :bot_level="bot_level" @addCard="addCard" @removeCard = "removeCard" @updateCard="updateCard" @hideShow = "hideShow" @saveCards = "saveCards" @johnSay="johnSay"/>
+      <ad></ad>
     </q-page-container>
   </q-layout>
 </template>
@@ -155,9 +156,11 @@
 <script>
 import { openURL } from 'quasar'
 import { sify } from 'chinese-conv'
+import Ad from '../components/Ad-Be'
 
 export default {
   name: 'MyLayout',
+  components: { Ad },
   data () {
     return {
       n: 50,
