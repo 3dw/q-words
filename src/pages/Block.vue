@@ -45,6 +45,7 @@ export default {
       this.ultra = 0
     },
     fire (hit) {
+      hit = hit.replace(' ', '')
       if (!this.die) {
         this.score += this.items.filter((o) => { return o.w === hit }).length
         this.items = this.items.filter((o) => { return o.w !== hit })
@@ -57,7 +58,7 @@ export default {
       const w = this.card_list[Math.floor(Math.random() * this.card_list.length)]
       // console.log(w)
       const cs = ['#fcc', '#cfc', '#ccf']
-      this.items.push({ w: w.name, y: 0, hide: false, moving: true, bg: cs[Math.floor(Math.random() * cs.length)], x: x })
+      this.items.push({ w: w.name.replace(' ', ''), y: 0, hide: false, moving: true, bg: cs[Math.floor(Math.random() * cs.length)], x: x })
     },
     go () {
       if (!this.die && this.start) {
